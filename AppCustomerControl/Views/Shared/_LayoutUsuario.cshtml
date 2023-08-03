@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AppCustomerControl</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AppCustomerControl.styles.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   
+</head>
+<body>
+    <header>
+        
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="panel panel-primary" style="margin-top:10px">
+                <div class="panel-heading">
+                    <div class="text-center">
+                        <h2 class="display-4">Customer Control</h2>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    @RenderBody()
+                </div>
+            </div>
+           
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - AppCustomerControl -
+        </div>
+    </footer>
+    <script src="~/siteuser/js/javascriptcamposenha.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

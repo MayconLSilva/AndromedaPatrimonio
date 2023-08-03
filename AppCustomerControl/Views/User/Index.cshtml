@@ -1,0 +1,37 @@
+﻿@model AppCustomerControl.Models.User
+@{
+    ViewData["Title"] = "Ativação de usuário";
+    Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+}
+<div class="text-center">
+    <img style="margin-top:3px" src="~/img/logo.png" />
+    <h1 class="display-4">Bem-vindo(a) ao sistema Customer Control</h1>
+    <a>Confirme abaixo: seu nome, login, e senha. Caso estejam corretos basta clicar em ativar conta.</a>
+</div>
+
+<div class="row">
+    <div style="margin-top:5px;margin-bottom:5px">
+        <<input asp-for="id" class="form-control" hidden />
+        <div class="col-xl-6" style="width:25% ;margin-left:auto;margin-right:auto">
+            <label asp-for="nome" class="control-label"></label>
+            <input asp-for="nome" class="form-control" readonly="true"/>
+            <span asp-validation-for="nome" class="text-danger"></span>
+        </div>
+        <div class="col-xl-6" style="width:25% ;margin-left:auto;margin-right:auto">
+            <label asp-for="login" class="control-label"></label>
+            <input asp-for="login" class="form-control" readonly="true" />
+            <span asp-validation-for="login" class="text-danger"></span>
+        </div>
+        <div class="col-xl-6" style="width:25% ;margin-left:auto;margin-right:auto">
+            <label asp-for="password" class="control-label"></label>
+            <input asp-for="password" readonly="true" type="password" value="@Model.password" id="Senha" name="Senha" class="form-control" />
+            <span asp-validation-for="password" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <a style="width:300px;height:50px; font-size:large;font-weight: bold" asp-action="Ativar" asp-route-id="@Model.id" class="btn btn-success" asp-action="Index"><i class="fa-solid fa-ban text-white"></i> Ativar conta </a>
+</div>
+
+
