@@ -26,10 +26,27 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a onclick="abreModalLoginUsuario()" style="margin-right:2px" class="btn btn-success btn-small navbar-btn text-white">login</a>
+                        </li>
+                        <li>
+                            <div class="btn-nav">
+                                <a class="btn btn-primary btn-small navbar-btn" href="">Sign up!</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
     </header>
+
+    <!-- Inicio do código fonte ref. ao modal login -->
+    <div class="modal" id="ModalUsuarioLogin" tabindex="-1" role="dialog">
+        <div id="ModalUsuarioLoginConteudo"></div>
+    </div>
+    <!-- Fim do código fonte ref. ao modal login -->
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -42,8 +59,24 @@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>*@
+    <script src="~/siteuser/css/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/siteuser/css/dist/js/bootstrap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+<script>
+    function abreModalLoginUsuario() {
+        $.ajax({
+            url: "@Url.Action("ModalLogin", "Home")",
+            type: "GET",
+        }).done(function (data) {
+            $('#ModalUsuarioLogin').modal({ backdrop: "static" });
+            $('#ModalUsuarioLogin').modal('show');
+            $('#ModalUsuarioLoginConteudo').html(data);
+        });
+    }
+</script>

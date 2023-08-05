@@ -1,6 +1,8 @@
 ﻿using AppCustomerControl.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace AppCustomerControl.Controllers
 {
@@ -28,5 +30,13 @@ namespace AppCustomerControl.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        public async Task<IActionResult> ModalLogin()
+        {
+            return PartialView("_ModalLoginUsuario");
+        }
+        
+
     }
 }
