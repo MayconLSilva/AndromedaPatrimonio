@@ -36,7 +36,11 @@ namespace AppCustomerControl.Controllers
         {
             return PartialView("_ModalLoginUsuario");
         }
-        
 
+        
+        public async Task<IActionResult> Dashboard()
+        {
+            return View("../Dashboard/Index");
+        }
     }
 }
