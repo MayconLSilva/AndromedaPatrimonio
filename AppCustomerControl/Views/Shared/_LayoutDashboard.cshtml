@@ -37,6 +37,17 @@
                         </li>
                         
                     </ul>
+                    <ul style="margin-right:15px" class="nav navbar-nav navbar-right">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @ViewBag.NomeUsuario
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Perfil</a>
+                                <a class="dropdown-item" href="#">Alterar Senha</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -57,8 +68,12 @@
     <script src="~/siteuser/css/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/siteuser/css/dist/js/bootstrap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- SCRIPT REFERENTE A MASCARA -->
     <script src="~/siteuser/jquery-mask-plugin/src/jquery.mask.js"></script>
-    
+    <!-- SCRIPT REFERENTE A NOTIFICAÇÃO TOAST -->
+    @await Component.InvokeAsync("Notyf")
+    <script src="~/siteuser/notify/notify.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

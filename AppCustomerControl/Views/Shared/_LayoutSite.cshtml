@@ -65,7 +65,10 @@
     <script src="~/siteuser/css/dist/js/bootstrap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/siteuser/jquery-mask-plugin/src/jquery.mask.js"></script>
-    
+    <!-- SCRIPT REFERENTE A NOTIFICAÇÃO TOAST -->
+    @await Component.InvokeAsync("Notyf")
+    <script src="~/siteuser/notify/notify.js"></script> 
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

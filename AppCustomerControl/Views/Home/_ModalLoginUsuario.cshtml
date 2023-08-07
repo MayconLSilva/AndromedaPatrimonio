@@ -2,44 +2,62 @@
 @{
     ViewData["Title"] = "Login usuário";
 }
-
-<div class="modal-dialog" role="document" style="max-width: 500px">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 style="margin-left:auto;margin-right:auto" class="modal-title">LOGIN</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <form class="modal-body">
-            <div class="row">
-                <img style="margin-left:auto;margin-right:auto;width:120px" src="~/img/login.png" />
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6" style="margin-left:auto;margin-right:auto">
-                            <label asp-for="login" class="control-label"></label>
-                            <input id="cpf" asp-for="login" class="form-control" />
-                            <span asp-validation-for="login" class="text-danger"></span>
+@*@using (Html.BeginForm("Dashboard", "Home", FormMethod.Post))
+{*@
+    <div class="modal-dialog" role="document" style="max-width: 500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="margin-left:auto;margin-right:auto" class="modal-title">LOGIN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="modal-body">
+                <div class="row">
+                    <img style="margin-left:auto;margin-right:auto;width:120px" src="~/img/login.png" />
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6" style="margin-left:auto;margin-right:auto">
+                                <label asp-for="login" class="control-label"></label>
+                                <input id="cpf" asp-for="login" class="form-control" />
+                                <span asp-validation-for="login" class="text-danger"></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-6" style="margin-left:auto;margin-right:auto">
-                            <label asp-for="password" class="control-label"></label>
-                            <input asp-for="password" type="password" class="form-control" />
-                            <span asp-validation-for="password" class="text-danger"></span>
+                        <div class="row">
+                            <div class="col-xl-6" style="margin-left:auto;margin-right:auto">
+                                <label asp-for="password" class="control-label"></label>
+                                <input asp-for="password" type="password" class="form-control" />
+                                <span asp-validation-for="password" class="text-danger"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </form>
+            <div class="modal-footer" style="margin-top:15px">
+                @*<a asp-action="Dashboard" asp-route-id="" class="btn btn-success"><i class="fa-sharp fa-solid fa-floppy-disk"></i> Entrar </a> 1 versao*@
+              @*   <input type="submit" value="Entrar" class="btn btn-success"/> *@
+                <button type="button" class="btn btn-success" onclick="fazLogin()"> Entrar</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fa-solid fa-arrow-right-from-bracket"></i> Fechar</button>
             </div>
-        </form>
-        <div class="modal-footer">
-            <a asp-action="Dashboard" class="btn btn-success"><i class="fa-sharp fa-solid fa-floppy-disk"></i> Entrar </a>
-            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fa-solid fa-arrow-right-from-bracket"></i> Fechar</button>
         </div>
     </div>
-</div>
+@*}*@
 <script>
     $(document).ready(function () {
         $('#cpf').mask('000.000.000-00');
     });
+    function fazLogin() {
+        $.ajax({
+            url: "@Url.Action("Dashboard", "Home")",
+            type: 'POST',
+            data: $("form").serialize()
+        }).done(function (data) {
+            $('#ModalUsuarioLogin').modal('hide');
+            $.notify("Bem vindo ao sistema, aproveite todas funcionalidades!!", "success");
+            
+        }).fail(function (data) {
+            console.log(data.responseText);
+            $.notify(data.responseText, "error");
+        });
+    }
 </script>
