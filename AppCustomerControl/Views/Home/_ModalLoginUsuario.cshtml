@@ -17,16 +17,18 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6" style="margin-left:auto;margin-right:auto">
-                            <label asp-for="login" class="control-label"></label>
-                            <input id="cpf" asp-for="login" class="form-control" />
-                            <span asp-validation-for="login" class="text-danger"></span>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input id="cpf" class="form-control" asp-for="login" placeholder="CPF">
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-6" style="margin-left:auto;margin-right:auto">
-                            <label asp-for="password" class="control-label"></label>
-                            <input asp-for="password" type="password" class="form-control" />
-                            <span asp-validation-for="password" class="text-danger"></span>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input asp-for="password" type="password" class="form-control" placeholder="Password">
+                            </div>
                         </div>
                     </div>
                 </div>
