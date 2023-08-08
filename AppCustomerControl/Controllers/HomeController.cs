@@ -70,22 +70,16 @@ namespace AppCustomerControl.Controllers
             if (pesquisaUsuario.password != modelUser.password)
                 return BadRequest("Senha não existe" + " 😭");
 
+            //Seta os valores na classe parametros
             var user = new UsuarioAtual()
             {
                 id_usuario = pesquisaUsuario.id,
                 login_usuario = pesquisaUsuario.nome
             };
-
             Parametros.atualiza(user);
-
-            var teste1 = Parametros.login_usuario;
-            //var nomeUsuarioLogado = pesquisaUsuario.nome;
-            // ViewBag.NomeUsuario = "aaaaaaaaaaaa";
             //_notifyService.Success("Bem vindo ao sistema, aproveite todas funcionalidades!!");
-            //return RedirectToAction(nameof(DashboardPrincipal));
+            
             return RedirectToAction("Index");
-            // return View(user);
-           
         }
 
         public IActionResult Sair()

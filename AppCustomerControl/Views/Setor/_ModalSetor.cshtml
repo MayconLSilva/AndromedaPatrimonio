@@ -1,0 +1,44 @@
+﻿@model AppCustomerControl.Models.Setor
+@{
+    ViewData["Title"] = "Login usuário";
+}
+
+<div class="modal-dialog" role="document" style="max-width: 500px">
+    <div class="modal-content">
+        <div class="modal-header">
+            @if (@Model.id == 0)
+            {
+                <h5 class="modal-title"><i class="fa fa-home"></i> Cadastro de Setor</h5> 
+            }
+            else
+            {
+                <h5 class="modal-title"><i class="fa fa-home"></i> Alteração do Setor - @Model.id</h5>
+            }
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form class="modal-body">
+            <div class="row">
+                <div class="container">
+                    <div class="row">
+                        <input asp-for="id" class="form-control" hidden />
+                        <div class="col-xl-6">
+                            <label asp-for="descricao" class="control-label"></label>
+                            <input asp-for="descricao" class="form-control" />
+                            <span asp-validation-for="descricao" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="modal-footer" style="margin-top:15px">
+            <button type="button" class="btn btn-success" onclick=""> Salvar </button>
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fa-solid fa-arrow-right-from-bracket"></i> Fechar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+</script>

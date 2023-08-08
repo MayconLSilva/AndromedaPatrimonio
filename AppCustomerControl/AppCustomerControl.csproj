@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Setor\" />
     <Folder Include="wwwroot\siteuser\css\" />
   </ItemGroup>
 

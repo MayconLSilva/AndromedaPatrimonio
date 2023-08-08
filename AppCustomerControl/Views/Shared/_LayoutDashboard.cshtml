@@ -28,8 +28,8 @@
                                 Cadastros
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index">Categoria</a>
-                                <a class="dropdown-item" href="#">Setor</a>
+                                <a class="dropdown-item" href="#">Categoria</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Setor" asp-action="Index">Setor</a>
                                 <a class="dropdown-item" href="#">Produto</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Outro item</a>
@@ -40,7 +40,7 @@
                     <ul class="nav navbar-nav navbar-right" style="margin-right:60px">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @ViewBag.NomeUsuario
+                                @Parametros.login_usuario
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" asp-area="" asp-controller="" asp-action=""><i class="fa fa-user"></i> Perfil </a>
@@ -53,6 +53,12 @@
             </div>
         </nav>
     </header>
+
+    <!-- Inicio do código fonte ref. ao modal login -->
+    <div class="modal" id="ModalSetor" tabindex="-1" role="dialog">
+        <div id="ModalSetorConteudo"></div>
+    </div>
+    <!-- Fim do código fonte ref. ao modal login -->
 
     <div class="container">
         <main role="main" class="pb-3">
@@ -80,5 +86,14 @@
 </html>
 
 <script>
-   
+    function abreModalSetor() {
+        $.ajax({
+            url: "@Url.Action("ActionModalSetor", "Setor")",
+            type: "GET",
+        }).done(function (data) {
+            $('#ModalSetor').modal({ backdrop: "static" });
+            $('#ModalSetor').modal('show');
+            $('#ModalSetorConteudo').html(data);
+        });
+    }
 </script>
