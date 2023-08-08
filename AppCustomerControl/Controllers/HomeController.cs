@@ -72,8 +72,8 @@ namespace AppCustomerControl.Controllers
 
             var user = new UsuarioAtual()
             {
-                id_usuario = 1,
-                login_usuario = "maycon"
+                id_usuario = pesquisaUsuario.id,
+                login_usuario = pesquisaUsuario.nome
             };
 
             Parametros.atualiza(user);
@@ -82,8 +82,8 @@ namespace AppCustomerControl.Controllers
             //var nomeUsuarioLogado = pesquisaUsuario.nome;
             // ViewBag.NomeUsuario = "aaaaaaaaaaaa";
             //_notifyService.Success("Bem vindo ao sistema, aproveite todas funcionalidades!!");
-            //return RedirectToAction(nameof(DashBoardPrincipal));
-            return RedirectToAction("Index");
+            //return RedirectToAction(nameof(DashboardPrincipal));
+             return RedirectToAction("Index");
             // return View(user);
           
         }
@@ -98,5 +98,7 @@ namespace AppCustomerControl.Controllers
             Parametros.atualiza(user);
             return RedirectToAction("Index");
         }
+
+        
     }
 }
