@@ -20,5 +20,34 @@ namespace AppCustomerControl.Controllers
             };
             return PartialView("_ModalSetor", setor);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ActionSalvaAtualiza(Setor objSetor)
+        {
+            if(objSetor.id == 0)
+            {
+                if (ModelState.IsValid)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return BadRequest(ModelState);
+                }
+                
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return BadRequest(ModelState);
+                }
+            }
+        }
+
     }
 }

@@ -96,4 +96,18 @@
             $('#ModalSetorConteudo').html(data);
         });
     }
+    function salvaSetor() {
+        $.ajax({
+            url: "@Url.Action("ActionSalvaAtualiza", "Setor")",
+            type: 'POST',
+            data: $("form").serialize()
+        }).done(function (data) {
+            $('#ModalSetor').modal('hide');
+            $.notify("Setor cadastrado com sucesso!", "success");
+
+        }).fail(function (data) {
+            console.log(data.responseText);
+            $.notify(data.responseText, "error");
+        });
+    }
 </script>
