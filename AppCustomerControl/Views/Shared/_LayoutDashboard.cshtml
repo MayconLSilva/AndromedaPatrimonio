@@ -86,10 +86,13 @@
 </html>
 
 <script>
-    function abreModalSetor() {
+    function abreModalSetor(idSetor) {
         $.ajax({
             url: "@Url.Action("ActionModalSetor", "Setor")",
             type: "GET",
+            data: {
+                id: idSetor,
+            },
         }).done(function (data) {
             $('#ModalSetor').modal({ backdrop: "static" });
             $('#ModalSetor').modal('show');
