@@ -31,7 +31,7 @@ namespace AppCustomerControl.Controllers
             {
                 ViewBag.NomeUsuario = valorAtualLogin;
             }
-            return View();
+             return View();
         }
 
         public IActionResult Privacy()
@@ -83,9 +83,9 @@ namespace AppCustomerControl.Controllers
             // ViewBag.NomeUsuario = "aaaaaaaaaaaa";
             //_notifyService.Success("Bem vindo ao sistema, aproveite todas funcionalidades!!");
             //return RedirectToAction(nameof(DashboardPrincipal));
-             return RedirectToAction("Index");
+            return RedirectToAction("Index");
             // return View(user);
-          
+           
         }
 
         public IActionResult Sair()
