@@ -1,13 +1,5 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    @if (!string.IsNullOrEmpty(Parametros.login_usuario))
-    {
-        Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
-    }
-    else
-    {
-        Layout = "~/Views/Shared/_LayoutSite.cshtml";
-    } 
 }
 
 <div class="text-center">

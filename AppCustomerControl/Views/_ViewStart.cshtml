@@ -1,13 +1,12 @@
-﻿@{
+﻿@*@{
     Layout = "_Layout";
-}
+}*@
 
-@*@if (!string.IsNullOrEmpty(Parametros.login_usuario))
+@if (!string.IsNullOrEmpty(Parametros.login_usuario))
 {
-     Layout = "_LayoutDashboard";
-    
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
 else
 {
-    Layout = "_LayoutSite";
-}*@
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+} 
