@@ -1,4 +1,5 @@
 ﻿using AppCustomerControl.Models;
+using AspNetCore;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,9 +13,10 @@ namespace AppCustomerControl.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         public INotyfService _notifyService { get; }
-        Parametros _parametros;
         
-        
+
+
+        public static string MyProperty { get; set; }
         public HomeController(ILogger<HomeController> logger, INotyfService notifyService)
         {
             _logger = logger;
@@ -24,7 +26,11 @@ namespace AppCustomerControl.Controllers
 
         public IActionResult Index()
         {
-            
+            var valorAtualLogin = Parametros.login_usuario;
+            if (!string.IsNullOrEmpty(valorAtualLogin))
+            {
+                ViewBag.NomeUsuario = valorAtualLogin;
+            }
             return View();
         }
 
@@ -42,10 +48,12 @@ namespace AppCustomerControl.Controllers
         [HttpGet]
         public async Task<IActionResult> ModalLogin()
         {
+            
             return PartialView("_ModalLoginUsuario");
         }
 
         [HttpPost]
+       // [ValidateAntiForgeryToken]
         public async Task<IActionResult> Dashboard(User modelUser)
         {
            
@@ -57,18 +65,38 @@ namespace AppCustomerControl.Controllers
 
             var pesquisaUsuario = listUser.Where(x => x.login == modelUser.login).FirstOrDefault();
             if (pesquisaUsuario == null)
-                return BadRequest("Usuário não encontrado" + " 😰");
+                return BadRequest("Usuário não encontrado" + " 😭");
 
             if (pesquisaUsuario.password != modelUser.password)
-                return BadRequest("Senha não existe" + " 😰");
+                return BadRequest("Senha não existe" + " 😭");
 
+            var user = new UsuarioAtual()
+            {
+                id_usuario = 1,
+                login_usuario = "maycon"
+            };
 
-            var nomeUsuarioLogado = pesquisaUsuario.nome;
-            ViewBag.NomeUsuario = nomeUsuarioLogado;
+            Parametros.atualiza(user);
+
+            var teste1 = Parametros.login_usuario;
+            //var nomeUsuarioLogado = pesquisaUsuario.nome;
+            // ViewBag.NomeUsuario = "aaaaaaaaaaaa";
             //_notifyService.Success("Bem vindo ao sistema, aproveite todas funcionalidades!!");
-            //return RedirectToAction(nameof(Index));
-            //return RedirectToAction("../Dashboard/Index");
-            return View("../Dashboard/Index");
+            //return RedirectToAction(nameof(DashBoardPrincipal));
+            return RedirectToAction("Index");
+            // return View(user);
+          
+        }
+
+        public IActionResult Sair()
+        {
+            var user = new UsuarioAtual()
+            {
+                id_usuario = 0,
+                login_usuario = null
+            };
+            Parametros.atualiza(user);
+            return RedirectToAction("Index");
         }
     }
 }

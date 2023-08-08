@@ -1,3 +1,13 @@
 ﻿@{
     Layout = "_Layout";
 }
+
+@*@if (!string.IsNullOrEmpty(Parametros.login_usuario))
+{
+     Layout = "_LayoutDashboard";
+    
+}
+else
+{
+    Layout = "_LayoutSite";
+}*@

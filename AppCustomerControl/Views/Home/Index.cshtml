@@ -1,10 +1,28 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+     //Layout = "~/Views/Shared/_LayoutSite.cshtml";
+    @if (!string.IsNullOrEmpty(Parametros.login_usuario))
+    {
+        Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutSite.cshtml";
+    }
+    
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if (!string.IsNullOrEmpty(Parametros.login_usuario))
+    {
+        <h1 class="display-4">Dashboard</h1>
+    }
+    else
+    {
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    }
+    
     
 </div>
+<meta http-equiv="refresh" content="600">

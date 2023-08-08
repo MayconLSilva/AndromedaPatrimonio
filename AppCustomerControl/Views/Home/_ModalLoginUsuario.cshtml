@@ -54,7 +54,7 @@
         }).done(function (data) {
             $('#ModalUsuarioLogin').modal('hide');
             $.notify("Bem vindo ao sistema, aproveite todas funcionalidades!!", "success");
-            
+
         }).fail(function (data) {
             console.log(data.responseText);
             $.notify(data.responseText, "error");

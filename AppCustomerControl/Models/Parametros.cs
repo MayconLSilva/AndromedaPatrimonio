@@ -5,10 +5,10 @@
         public static int id_usuario { get; set; }
         public static string login_usuario { get; set; }
 
-        public  Parametros(int IDUsuario, string LoginUsuario)
+        public static void atualiza(UsuarioAtual objUsuario)
         {
-            id_usuario = IDUsuario;
-            login_usuario = LoginUsuario;
+            id_usuario = objUsuario.id_usuario;
+            login_usuario = objUsuario.login_usuario;
         }
 
         
