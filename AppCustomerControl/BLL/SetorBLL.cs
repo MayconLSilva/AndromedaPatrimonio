@@ -19,8 +19,22 @@ namespace AppCustomerControl.BLL
                 descricao = "RH",
                 data_cadastro = DateTime.Now.AddDays(-5)
             };
+            var setor3 = new Setor()
+            {
+                id = 3,
+                descricao = "Administrativo",
+                data_cadastro = DateTime.Now.AddDays(-5)
+            };
+            var setor4 = new Setor()
+            {
+                id = 4,
+                descricao = "Financeiro",
+                data_cadastro = DateTime.Now.AddDays(-5)
+            };
             list.Add(setor1);
             list.Add(setor2);
+            list.Add(setor3);
+            list.Add(setor4);
 
             return list;
         }
