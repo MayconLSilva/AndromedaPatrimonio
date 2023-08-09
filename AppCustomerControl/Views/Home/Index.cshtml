@@ -1,7 +1,14 @@
-﻿@{
+﻿@*@{
+    ViewData["Title"] = "Home Page";
+}*@
+@if (!string.IsNullOrEmpty(Parametros.login_usuario))
+{
+    ViewData["Title"] = "Dashboard";
+}
+else
+{
     ViewData["Title"] = "Home Page";
 }
-
 <div class="text-center">
     @if (!string.IsNullOrEmpty(Parametros.login_usuario))
     {
