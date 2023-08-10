@@ -14,6 +14,9 @@ namespace AndromedaPatrimonio.Controllers
         }
         public IActionResult Index()
         {
+            if (Parametros.id_usuario == 0 || Parametros.id_usuario == null)
+                return View("../Home/Index");
+
             var list = SetorBLL.listaSetores();
             return View(list);
         }
