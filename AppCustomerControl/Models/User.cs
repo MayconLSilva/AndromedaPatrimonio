@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace AppCustomerControl.Models
+namespace AndromedaPatrimonio.Models
 {
     public class User
     {

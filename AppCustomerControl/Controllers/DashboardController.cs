@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace AppCustomerControl.Controllers
+namespace AndromedaPatrimonio.Controllers
 {
     public class DashboardController : Controller
     {

@@ -1,7 +1,7 @@
-﻿using AppCustomerControl.Models;
+﻿using AndromedaPatrimonio.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AppCustomerControl.Controllers
+namespace AndromedaPatrimonio.Controllers
 {
     public class UserController : Controller
     {

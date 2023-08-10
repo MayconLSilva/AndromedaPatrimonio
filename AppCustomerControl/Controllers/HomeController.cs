@@ -1,4 +1,4 @@
-﻿using AppCustomerControl.Models;
+﻿using AndromedaPatrimonio.Models;
 using AspNetCore;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 
-namespace AppCustomerControl.Controllers
+namespace AndromedaPatrimonio.Controllers
 {
     public class HomeController : Controller
     {

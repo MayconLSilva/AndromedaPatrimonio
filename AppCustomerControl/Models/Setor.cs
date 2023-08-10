@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace AppCustomerControl.Models
+namespace AndromedaPatrimonio.Models
 {
     public class Setor
     {

@@ -1,6 +1,6 @@
-﻿using AppCustomerControl.Models;
+﻿using AndromedaPatrimonio.Models;
 
-namespace AppCustomerControl.BLL
+namespace AndromedaPatrimonio.BLL
 {
     public class SetorBLL
     {

@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["AppCustomerControl/AppCustomerControl.csproj", "AppCustomerControl/"]
-RUN dotnet restore "AppCustomerControl/AppCustomerControl.csproj"
+COPY ["AndromedaPatrimonio/AndromedaPatrimonio.csproj", "AndromedaPatrimonio/"]
+RUN dotnet restore "AndromedaPatrimonio/AndromedaPatrimonio.csproj"
 COPY . .
-WORKDIR "/src/AppCustomerControl"
-RUN dotnet build "AppCustomerControl.csproj" -c Release -o /app/build
+WORKDIR "/src/AndromedaPatrimonio"
+RUN dotnet build "AndromedaPatrimonio.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "AppCustomerControl.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "AndromedaPatrimonio.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "AppCustomerControl.dll"]
+ENTRYPOINT ["dotnet", "AndromedaPatrimonio.dll"]

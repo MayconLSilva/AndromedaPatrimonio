@@ -1,9 +1,9 @@
-﻿using AppCustomerControl.BLL;
-using AppCustomerControl.Models;
+﻿using AndromedaPatrimonio.BLL;
+using AndromedaPatrimonio.Models;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AppCustomerControl.Controllers
+namespace AndromedaPatrimonio.Controllers
 {
     public class SetorController : Controller
     {

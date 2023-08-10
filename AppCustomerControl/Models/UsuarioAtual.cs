@@ -1,4 +1,4 @@
-﻿namespace AppCustomerControl.Models
+﻿namespace AndromedaPatrimonio.Models
 {
     public class UsuarioAtual
     {
