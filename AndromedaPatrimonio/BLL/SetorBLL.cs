@@ -42,8 +42,12 @@ namespace AndromedaPatrimonio.BLL
         public static List<Empresa> listaEmpresas()
         {
             var listEmpresa = new List<Empresa>();
-            listEmpresa.Add(new Empresa(1, "WinRar Digital"));
-            listEmpresa.Add(new Empresa(2, "CDS Informatica"));
+            //listEmpresa.Add(new Empresa(1, "WinRar Digital"));
+            //listEmpresa.Add(new Empresa(2, "CDS Informatica"));
+            var empresa1 = new Empresa() { id = 1, nome_fantasia = "WinRar Digital" };
+            var empresa2 = new Empresa() { id = 2, nome_fantasia = "CDS Informatica" };
+            listEmpresa.Add(empresa1);
+            listEmpresa.Add(empresa2);
 
             return listEmpresa;
         }

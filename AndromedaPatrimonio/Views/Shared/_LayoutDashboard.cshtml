@@ -25,9 +25,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">DASHBOARD</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" onclick="abreModalSelecionaEmpresa()" href="#">teste empresa</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 CADASTROS
@@ -71,6 +68,7 @@
                                 <span class="glyphicon glyphicon-user"></span> @Parametros.login_usuario.ToUpper()
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" onclick="abreModalSelecionaEmpresa()"><i class="fa fa-building"></i> Seleciona Empresa</a>
                                 <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Perfil</a>
                                 <a class="dropdown-item" href="#"><i class="fa fa-key"></i> Alterar Senha</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Sair"><i class="fa fa-sign-out"></i> Sair</a>
@@ -96,6 +94,7 @@
 
     <div class="container">
         <main role="main" class="pb-3">
+            <h4>@Parametros.nome_empresa_completo.ToUpper()</h4>
             @RenderBody()
         </main>
     </div>
@@ -155,6 +154,21 @@
             $('#ModalSelecionaEmpresa').modal({ backdrop: "static" });
             $('#ModalSelecionaEmpresa').modal('show');
             $('#ModalSelecionaEmpresaConteudo').html(data);
+        });
+    }
+    function salvaEmpresaSelecionada() {
+        $.ajax({
+            url: "@Url.Action("ActionEmpresaSelecionada", "Home")",
+            type: 'POST',
+            data: $("form").serialize()
+        }).done(function (data) {
+            $('#ModalSelecionaEmpresa').modal('hide');
+            $.notify("Empresa selecionada com sucesso!", "success");
+            location.reload();
+
+        }).fail(function (data) {
+            console.log(data.responseText);
+            $.notify(data.responseText, "error");
         });
     }
 </script>

@@ -31,6 +31,7 @@ namespace AndromedaPatrimonio.Controllers
             if (!string.IsNullOrEmpty(valorAtualLogin))
             {
                 ViewBag.NomeUsuario = valorAtualLogin;
+             
             }
              return View();
         }
@@ -98,9 +99,34 @@ namespace AndromedaPatrimonio.Controllers
         [HttpGet]
         public async Task<IActionResult> ActionModalSelecionaEmpresa()
         {
-            ViewBag.ViewUF = new SelectList(SetorBLL.listaEmpresas(), "id","nome_fantasia");
+            ViewBag.ViewEmpresasCadastradas = new SelectList(SetorBLL.listaEmpresas(), "id", "nome_fantasia");
 
             return PartialView("_ModalSelecionaEmpresa");
+        }
+
+       
+
+        [HttpPost]
+        public async Task<IActionResult> ActionEmpresaSelecionada(Empresa objEmpresa)
+        {
+
+            if(objEmpresa.id == null)
+                return BadRequest("Empresa não selecionada!!" + " 😭");
+
+
+            var empresas = SetorBLL.listaEmpresas();
+
+            //Seta os valores na classe parametros
+            var user = new UsuarioAtual()
+            {
+                id_usuario = Parametros.id_usuario,
+                login_usuario = Parametros.login_usuario,
+                id_empresa = (int)objEmpresa.id,
+                nome_empresa = empresas.Where(x => x.id == objEmpresa.id).Select(x => x.nome_fantasia).First()
+            };
+            Parametros.atualiza(user);
+
+            return RedirectToAction("Index");
         }
     }
 }
