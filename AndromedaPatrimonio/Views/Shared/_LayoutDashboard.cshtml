@@ -94,7 +94,15 @@
 
     <div class="container">
         <main role="main" class="pb-3">
-            <h4>@Parametros.nome_empresa_completo.ToUpper()</h4>
+            @if(Parametros.id_empresa == 0)
+            {
+                <h4 class="glyphicon glyphicon-home"> Selecione uma empresa</h4>
+            }
+            else
+            {
+                <span class="glyphicon glyphicon-home"> </span> @Parametros.nome_empresa_completo.ToUpper()
+            }
+            
             @RenderBody()
         </main>
     </div>
