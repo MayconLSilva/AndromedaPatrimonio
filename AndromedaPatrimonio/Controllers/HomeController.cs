@@ -1,4 +1,5 @@
-﻿using AndromedaPatrimonio.Models;
+﻿using AndromedaPatrimonio.BLL;
+using AndromedaPatrimonio.Models;
 using AspNetCore;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,7 @@ namespace AndromedaPatrimonio.Controllers
             if (!string.IsNullOrEmpty(valorAtualLogin))
             {
                 ViewBag.NomeUsuario = valorAtualLogin;
+
             }
              return View();
         }
@@ -78,6 +80,7 @@ namespace AndromedaPatrimonio.Controllers
             };
             Parametros.atualiza(user);
             //_notifyService.Success("Bem vindo ao sistema, aproveite todas funcionalidades!!");
+
             
             return RedirectToAction("Index");
         }
@@ -93,6 +96,12 @@ namespace AndromedaPatrimonio.Controllers
             return RedirectToAction("Index");
         }
 
-        
+        [HttpGet]
+        public async Task<IActionResult> ActionModalSelecionaEmpresa()
+        {
+            ViewBag.ViewUF = new SelectList(SetorBLL.listaEmpresas(), "id","nome_fantasia");
+
+            return PartialView("_ModalSelecionaEmpresa");
+        }
     }
 }

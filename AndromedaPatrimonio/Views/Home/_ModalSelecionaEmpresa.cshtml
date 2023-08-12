@@ -1,0 +1,32 @@
+﻿@model AndromedaPatrimonio.Models.Empresa
+@{
+    ViewData["Title"] = "Seleciona Empresa";
+}
+
+<div class="modal-dialog" role="document" style="max-width: 500px">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 style="margin-right:auto" class="modal-title"><i class="fa fa-home"></i> Seleciona Empresa </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form class="modal-body">
+            <div class="row">
+                <div class="container">
+                    <div class="row">
+                        <input asp-for="id" class="form-control" hidden />
+                        <div class="col-xl-6">
+                            <label asp-for="nome_fantasia" class="control-label"></label>
+                            @Html.DropDownList("nome_fantasia", (SelectList)ViewBag.ViewUF, "- Selecione -", new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="modal-footer" style="margin-top:15px">
+            <button type="button" class="btn btn-success" onclick=""><i class="fa-solid fa fa-floppy-o"></i> Salvar </button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa-solid fa fa-sign-out"></i> FECHAR</button>
+        </div>
+    </div>
+</div>

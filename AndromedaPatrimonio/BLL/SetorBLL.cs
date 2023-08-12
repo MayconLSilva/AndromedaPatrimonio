@@ -38,5 +38,14 @@ namespace AndromedaPatrimonio.BLL
 
             return list;
         }
+    
+        public static List<Empresa> listaEmpresas()
+        {
+            var listEmpresa = new List<Empresa>();
+            listEmpresa.Add(new Empresa(1, "WinRar Digital"));
+            listEmpresa.Add(new Empresa(2, "CDS Informatica"));
+
+            return listEmpresa;
+        }
     }
 }

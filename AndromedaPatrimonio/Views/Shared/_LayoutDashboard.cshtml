@@ -25,6 +25,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">DASHBOARD</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" onclick="abreModalSelecionaEmpresa()" href="#">teste empresa</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 CADASTROS
@@ -32,7 +35,31 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Categoria</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Setor" asp-action="Index">Setor</a>
-                                <a class="dropdown-item" href="#">Produto</a>
+                                <a class="dropdown-item" href="#">Equipamento</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Outro item</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                MOVIMENTOS
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Reserva</a>
+                                <a class="dropdown-item" href="#">Locação</a>
+                                <a class="dropdown-item" href="#">Desapropriação</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Outro item</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                RELATÓRIOS
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Locações</a>
+                                <a class="dropdown-item" href="#">Equipamentos</a>
+                                <a class="dropdown-item" href="#">Desapropriações</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Outro item</a>
                             </div>
@@ -60,6 +87,12 @@
         <div id="ModalSetorConteudo"></div>
     </div>
     <!-- Fim do código fonte ref. ao modal setor -->
+
+    <!-- Inicio do código fonte ref. ao modal seleciona empresa -->
+    <div class="modal" id="ModalSelecionaEmpresa" tabindex="-1" role="dialog">
+        <div id="ModalSelecionaEmpresaConteudo"></div>
+    </div>
+    <!-- Fim do código fonte ref. ao modal seleciona empresa -->
 
     <div class="container">
         <main role="main" class="pb-3">
@@ -112,6 +145,16 @@
         }).fail(function (data) {
             console.log(data.responseText);
             $.notify(data.responseText, "error");
+        });
+    }
+    function abreModalSelecionaEmpresa() {
+        $.ajax({
+            url: "@Url.Action("ActionModalSelecionaEmpresa", "Home")",
+            type: "GET",
+        }).done(function (data) {
+            $('#ModalSelecionaEmpresa').modal({ backdrop: "static" });
+            $('#ModalSelecionaEmpresa').modal('show');
+            $('#ModalSelecionaEmpresaConteudo').html(data);
         });
     }
 </script>
