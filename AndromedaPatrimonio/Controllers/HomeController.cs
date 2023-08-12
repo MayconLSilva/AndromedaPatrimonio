@@ -31,7 +31,6 @@ namespace AndromedaPatrimonio.Controllers
             if (!string.IsNullOrEmpty(valorAtualLogin))
             {
                 ViewBag.NomeUsuario = valorAtualLogin;
-
             }
              return View();
         }

@@ -81,4 +81,19 @@
             $('#ModalUsuarioLoginConteudo').html(data);
         });
     }
+    function fazLogin() {
+        $.ajax({
+            url: "@Url.Action("Dashboard", "Home")",
+            type: 'POST',
+            data: $("form").serialize()
+        }).done(function (data) {
+            $('#ModalUsuarioLogin').modal('hide');
+            location.reload();
+            $.notify("Bem vindo ao sistema, aproveite todas funcionalidades!!", "success");
+
+        }).fail(function (data) {
+            console.log(data.responseText);
+            $.notify(data.responseText, "error");
+        });
+    }
 </script>
