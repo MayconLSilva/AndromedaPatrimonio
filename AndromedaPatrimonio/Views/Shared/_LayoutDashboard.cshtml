@@ -68,7 +68,7 @@
                                 <span class="glyphicon glyphicon-user"></span> @Parametros.login_usuario.ToUpper()
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" onclick="abreModalSelecionaEmpresa()"><i class="fa fa-building"></i> Seleciona Empresa</a>
+                                <a class="dropdown-item" onclick="abreModalSelecionaEmpresa()"><i class="fa fa-building"></i> Trocar Empresa</a>
                                 <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Perfil</a>
                                 <a class="dropdown-item" href="#"><i class="fa fa-key"></i> Alterar Senha</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Sair"><i class="fa fa-sign-out"></i> Sair</a>
@@ -92,11 +92,12 @@
     </div>
     <!-- Fim do código fonte ref. ao modal seleciona empresa -->
 
+    
     <div class="container">
         <main role="main" class="pb-3">
             @if (Parametros.id_empresa == 0)
             {
-                <h4 class="glyphicon glyphicon-home"> Selecione uma empresa</h4>
+              <a class="btn btn-primary" onclick="abreModalSelecionaEmpresa()"><i class="glyphicon glyphicon-home"></i> Selecione uma empresa </a>
             }
             else
             {
@@ -135,6 +136,11 @@
 </html>
 
 <script>
+    $(document).ready(function () {
+       if(@Parametros.id_empresa == 0){
+            abreModalSelecionaEmpresa();
+       }
+    });
     function abreModalSetor(idSetor) {
         $.ajax({
             url: "@Url.Action("ActionModalSetor", "Setor")",
